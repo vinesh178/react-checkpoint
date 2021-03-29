@@ -23,14 +23,6 @@ const Checkpoint = ({
   onTaskToggle,
 }) => {
   const classes = useStyles();
-  const [percentComplete, setPercentComplete] = useState();
-
-  useEffect(() => {
-    const totalTasks = checkpoint.taskList.length;
-    const completed = checkpoint.taskList.filter((e) => e.completed).length;
-    const pcomplete = totalTasks !== 0 ? (completed / totalTasks) * 100 : 0;
-    setPercentComplete(pcomplete.toFixed(2));
-  }, []);
 
   return (
     <div>
@@ -47,7 +39,7 @@ const Checkpoint = ({
         />
 
         <CardContent>
-          <Typography>Percent Complete : {percentComplete} % </Typography>
+          <Typography>Percent Complete : {checkpoint.percentComplete} % </Typography>
           <Typography component={"span"} variant="body2" color="textSecondary">
             {checkpoint.taskList.map((task) => (
               <Task
